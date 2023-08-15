@@ -3,10 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <title>Chat Bot</title>
+    <link rel="stylesheet" href="../static/css/demo.css">
 </head>
 <body>
-    <p>{{a}}</p>
+    <div class="container">
+        <div class="messages_container">
+
+            <div class="chat_header">
+                <div class="chat_user_status">
+                    <div class="status_icon">●</div>
+                    <div class="chat_user_name">bot</div>
+                </div>
+            </div>
+
+            <div class="messages">
+                <div class="chat_message chat_left">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                                このシステムはChat Botです。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat_clear"></div>
+
+                <div class="chat_message chat_right">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                                ではこれを探してください。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat_clear"></div>
+            </div>
+
+            <div class="send">
+                <form action="" method="post">
+                    <textarea name="question" class="send_message"></textarea>
+                    <button type="send" class="send_btn">送信</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,14 +1,15 @@
+# !/usr/bin/env python3
+# -*- coding:utf-8 -*-
+# 必要なものをインポート
+
 from flask import Flask, render_template
 
-app = Flask(__name__)   #Flaskのインスタンス化(デフォルトでmainになる)
+app = Flask(__name__, template_folder='template')   #Flaskのインスタンス化(デフォルトでmainになる)
 
 @app.route('/') #ルートからのパスを設定
 def index():
-    html = render_template('index.html', a= '変数なう')
-    return html
+    return render_template('main.html')
 
-@app.route('/good') #ルートからのパスを設定
-def good():
-    return 'good'
+# Flaskで必要なもの、port=8000番
 if __name__ == '__main__':
-    app.run(debug=True) #Flaskを実行
+    app.run(port=8000,debug=True) #Flaskを実行
