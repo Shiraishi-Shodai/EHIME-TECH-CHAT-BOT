@@ -63,17 +63,36 @@
                 </div>
                 <div class="chat_clear"></div>
                 {% endfor %}{% endfor %}{% endif %}
+                <div id="scroll"></div>
 
 
             </div>
 
             <div class="send">
-                <form action="" method="post">
-                    <textarea name="question" class="send_message"></textarea>
-                    <button type="send" class="send_btn">送信</button>
+                <form action="" method="post"  id="a">
+                    <textarea id='question' onkeydown="handleTextarea(event)" name="question" class="send_message" placeholder="If you type 'translate ~' at the end of the sentence, it will translate ~ to Japanese."></textarea>
+                    
+                    <button type="send" class="send_btn" id="b">送信</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        const handleTextarea = (event) => {
+            if(event.keyCode === 13 && !event.shiftKey){
+                event.preventDefault(); //自動改行のキャンセル
+                document.getElementById('a').submit();
+            }
+        }
+
+        //最新のチャットを表示
+        let target = document.getElementById('scroll');
+        //false の場合、要素の下端がスクロール可能祖先の表示範囲の下端に来るようにスクロールします
+        target.scrollIntoView(false);   //target要素をデフォルトで表示
+
+        //デフォルトでテキストエリアをアクティブにする
+        document.getElementById('question').focus();
+    </script>
 </body>
 </html>
