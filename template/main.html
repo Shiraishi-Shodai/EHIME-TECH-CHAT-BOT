@@ -22,7 +22,7 @@
                     <div class="message_box">
                         <div class="message_content">
                             <div class="message_text">
-                                このシステムはChat Botです。
+                                このシステムはChat bind:です。
                             </div>
                         </div>
                     </div>
@@ -33,12 +33,38 @@
                     <div class="message_box">
                         <div class="message_content">
                             <div class="message_text">
-                                ではこれを探してください。
+                                では、これをさがしてください
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="chat_clear"></div>
+
+                {% if array %}{% for data in array%}{% for k in data %}
+                <div class="chat_message chat_right">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                               {{k}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat_clear"></div>
+
+                <div class="chat_message chat_left">
+                    <div class="message_box">
+                        <div class="message_content">
+                            <div class="message_text">
+                               {{data[k]}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat_clear"></div>
+                {% endfor %}{% endfor %}{% endif %}
+
+
             </div>
 
             <div class="send">
