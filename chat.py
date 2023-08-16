@@ -1,10 +1,11 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+from my_tagging import MecabTagger
 
 # チャットボット指定
-bot = ChatBot('MyBot')
-
-
+bot = ChatBot(
+    name='MyBot',
+    tagger=MecabTagger,)
 
 while True:
     try:
