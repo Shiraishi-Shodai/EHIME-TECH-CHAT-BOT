@@ -5,6 +5,7 @@
 from flask import Flask, render_template, request, redirect
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
+from deep_translator import GoogleTranslator
 
 
 app = Flask(__name__, template_folder='template')   #Flaskのインスタンス化(デフォルトでmainになる)
@@ -51,18 +52,24 @@ def index():
     if request.method == 'GET':
 
         return render_template('main.html')
+    
     # POSTで受け取った値を取得
     question = request.form['question']
-    # # quesitonをキーとし、対応する回答を取得
-    # answer = find_answer(question, answer_data)
-    answer = bot.get_response(question)
+    if question.endswith('translate'):
+        # 末尾のtranslateを削除
+        question = question.rstrip('translate')
+        # questionを日本語に翻訳
+        answer = GoogleTranslator(source='auto',target='ja').translate(question)
+    else:
+        # # quesitonをキーとし、対応する回答を取得
+        # answer = find_answer(question, answer_data)
+        answer = bot.get_response(question)
     # array配列に辞書を追加
     array.append({
         question: answer
     })
     # question,answerをmain.htmlに渡し、main.htmlを表示する
     return render_template('main.html', array=array)
-
 
 # Flaskで必要なもの、port=8000番
 # このファイルを直接実行しているかを判断
